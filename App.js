@@ -1,12 +1,58 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import Moment from 'react-moment';
+import { StyleSheet, Text, View, Button, Alert, TouchableOpacity } from 'react-native';
 
 export default function App() {
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    var month = new Date().getMonth()+1;
+    var date = new Date().getDate();
+    var year = new Date().getFullYear();
+
+    var hours = new Date().getHours();
+    var minutes = new Date().getMinutes();
+    
+
+    setCurrentDate(
+      month + '/' + date + '/' + year + ' ' + hours + ':' + minutes 
+    );
+  })
+
+  
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+
+      <Text style={styles.timeFont}>{currentDate}</Text>
+
+
+
+      <Text>WELCOME</Text>
       <StatusBar style="auto" />
+      <View style={styles.buttonTest}>
+        <Button 
+          onPress={() => {
+            alert('hi');
+          }}
+          title="press me for testing"
+        />
+      </View>
+      <Button 
+        onPress={() => {
+          alert('hi');
+        }}
+        title="press me"
+        />
+
+      <Button 
+        onPress={() => {
+          alert('hi');
+        }}
+        title="press me"
+        />
+
     </View>
   );
 }
@@ -18,4 +64,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  timeFont:{
+    fontSize: 50,
+    height: 600, 
+    
+  },
+
+  buttonTest:{
+    alignItems: "flex-start",
+    fontSize:10, 
+    
+  }
 });
+
