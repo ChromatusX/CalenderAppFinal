@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import { View, Text, Button, Platform } from 'react-native';
 import * as Calendar from 'expo-calendar';
+import * as Permissions from 'expo-permissions';
 
-export default function App() {
+function CalendarScreen({navigation}) {
   useEffect(() => {
     (async () => {
+      //Permissions.askAsync('calendar');
+      //Permissions.askAsync('reminders');
+
       const { status } = await Calendar.requestCalendarPermissionsAsync();
       if (status === 'granted') {
         const calendars = await Calendar.getCalendarsAsync();
@@ -51,3 +55,5 @@ async function createCalendar() {
   });
   console.log(`Your new calendar ID is: ${newCalendarID}`);
 }
+
+export default CalendarScreen; 

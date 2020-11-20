@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Moment from 'react-moment';
 import { StyleSheet, Text, View, Button, Alert, TouchableOpacity } from 'react-native';
 
-export default function App() {
+function HomeScreen({navigation}) {
   const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function App() {
     setCurrentDate(
       month + '/' + date + '/' + year + ' ' + hours + ':' + minutes 
     );
-  })
+  });
 
   
 
@@ -36,20 +36,13 @@ export default function App() {
             title="Move to Calendar"
             onPress={() => navigation.navigate("Calendar")}
             />
-        <Button 
-          onPress={() => {
-            alert('hi');
-          }}
-          title="press me for testing"
-        />
-      </View>
-      <Button 
-        onPress={() => {
-          alert('hi');
-        }}
-        title="press me"
-        />
 
+        <Button
+            title="Move to Profile"
+            onPress={() => navigation.navigate("Profile")}
+            />
+        
+      </View>
       <Button 
         onPress={() => {
           alert('hi');
@@ -80,4 +73,6 @@ const styles = StyleSheet.create({
     
   }
 });
+
+export default HomeScreen; 
 
